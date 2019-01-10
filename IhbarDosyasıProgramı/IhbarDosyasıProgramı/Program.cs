@@ -32,7 +32,41 @@ namespace IhbarDosyasıProgramı
             Console.WriteLine("Karşılaştırmak istediğiniz eski klasörün adresini giriniz: ");
             string pathB = Console.ReadLine();
 
-            
+            List<string> db = new List<string>();
+
+            using (SqlConnection sqlConn = new SqlConnection(string.Format(dosyaAdi)))
+            {
+                using (SqlCommand sqlComm = new SqlCommand(string.Format("SELECT k_ihbarlar FROM ihb_dosyaNo ", unitID), sqlConn))
+                {
+                    try
+                    {
+                        sqlConn.Open();
+                        using (SqlDataReader sqlReader = sqlComm.ExecuteReader())
+                        {
+                            if (sqlReader.HasRows)
+                            {
+                                while (sqlReader.Read())
+                                {
+                                    //Employee employee = new Employee()
+                                    {
+                                        //ID= sqlReader["ID"].ToString(),
+                                        //Name = StaticField.id_ID.TextInfo.ToTitleCase(sqlReader["Name"].ToString())
+                                    };
+                                //employees.Add(employee);
+                                }
+                            }
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine("Liste alınamadı");
+                    }
+
+            //return employees;
+        }
+    }
+}
+
             //string pathA = @"C:\Users\fdery\Desktop\Ihbarlar\AnadoluSigorta";  
             //string pathB = @"C:\Users\fdery\Desktop\Eski Ihbarlar\AnadoluSigorta";  
 

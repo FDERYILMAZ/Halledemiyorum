@@ -32,40 +32,40 @@ namespace IhbarDosyasıProgramı
             Console.WriteLine("Karşılaştırmak istediğiniz eski klasörün adresini giriniz: ");
             string pathB = Console.ReadLine();
 
-            List<string> db = new List<string>();
+        //    List<string> db = new List<string>();
 
-            using (SqlConnection sqlConn = new SqlConnection(string.Format(dosyaAdi)))
-            {
-                using (SqlCommand sqlComm = new SqlCommand(string.Format("SELECT k_ihbarlar FROM ihb_dosyaNo ", unitID), sqlConn))
-                {
-                    try
-                    {
-                        sqlConn.Open();
-                        using (SqlDataReader sqlReader = sqlComm.ExecuteReader())
-                        {
-                            if (sqlReader.HasRows)
-                            {
-                                while (sqlReader.Read())
-                                {
-                                    //Employee employee = new Employee()
-                                    {
-                                        //ID= sqlReader["ID"].ToString(),
-                                        //Name = StaticField.id_ID.TextInfo.ToTitleCase(sqlReader["Name"].ToString())
-                                    };
-                                //employees.Add(employee);
-                                }
-                            }
-                        }
-                    }
-                    catch (Exception ex)
-                    {
-                        Console.WriteLine("Liste alınamadı");
-                    }
+        //    using (SqlConnection sqlConn = new SqlConnection(string.Format(dosyaAdi)))
+        //    {
+        //        using (SqlCommand sqlComm = new SqlCommand(string.Format("SELECT k_ihbarlar FROM ihb_dosyaNo ", unitID), sqlConn))
+        //        {
+        //            try
+        //            {
+        //                sqlConn.Open();
+        //                using (SqlDataReader sqlReader = sqlComm.ExecuteReader())
+        //                {
+        //                    if (sqlReader.HasRows)
+        //                    {
+        //                        while (sqlReader.Read())
+        //                        {
+        //                            //Employee employee = new Employee()
+        //                            {
+        //                                //ID= sqlReader["ID"].ToString(),
+        //                                //Name = StaticField.id_ID.TextInfo.ToTitleCase(sqlReader["Name"].ToString())
+        //                            };
+        //                        //employees.Add(employee);
+        //                        }
+        //                    }
+        //                }
+        //            }
+        //            catch (Exception ex)
+        //            {
+        //                Console.WriteLine("Liste alınamadı");
+        //            }
 
-            //return employees;
-        }
+        //    //return employees;
+        //    }
+        //}
     }
-}
 
             //string pathA = @"C:\Users\fdery\Desktop\Ihbarlar\AnadoluSigorta";  
             //string pathB = @"C:\Users\fdery\Desktop\Eski Ihbarlar\AnadoluSigorta";  
@@ -140,6 +140,33 @@ namespace IhbarDosyasıProgramı
 
         public static string klasorKarsilastir()
         {
+                    List list = Student.getList();
+
+                    List _cakisanlar = new List();
+
+                    foreach (var item in list)
+                    {
+                        List linqResult = (from i in list where i.Age == item.Age select i).ToList();
+                    
+                        if (_cakisanlar != null && _cakisanlar.Count()>0
+                        {
+                            if (linqResult.Count()>1
+                            {
+                                foreach (var item2 in linqResult)
+                                {
+                                    if (!_cakisanlar.Where(k=>k.Id==item2.Id).Any
+                                    {
+                                        _cakisanlar.Add(item2);
+                                    }
+                                }
+                            }
+                        }
+                        else
+                        {
+                            _cakisanlar.AddRange(linqResult);
+                        }
+                    }
+
             return null;
         }
 
